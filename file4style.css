@@ -1,0 +1,153 @@
+h1{
+    background-color: bisque;
+}
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: black;
+    margin: 0;
+    padding: 0;
+}
+.preloader{
+    width:1px;
+    height:1px;
+    position: absolute;
+    top:0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+}
+.preloader > img{
+    width:0;
+    height:0;
+}
+.slider-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+}
+.slider-container > img{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    min-height: 55%;
+    object-fit: cover;
+    transform: scale(2);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.slider-container > input{
+    display: none;
+}
+.slider-container > input:checked + img{
+    transform:scale(1);
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+.slider-container
+> input:nth-child(1) checked
+~ .pagination
+> lable:nth-child(1),
+.slider-container
+> input:nth-child(3) checked
+~ .pagination
+> lable:nth-child(2),
+.slider-container
+> input:nth-child(5) checked
+~ .pagination
+> lable:nth-child(3),
+.slider-container
+> input:nth-child(7) checked
+~ .pagination
+> lable:nth-child(4),
+.slider-container
+> input:nth-child(9) checked
+~ .pagination
+> lable:nth-child(5){
+background: #2fb2f8;
+}
+.pagination{
+    position: absolute;
+    padding: 10px;
+    border-radius: 20px;
+    bottom: 5%;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 7;
+}
+.slider-container > .pagination > label{
+    width:25px;
+    height: 25px;
+    margin: 0px 10px;
+    background: white;
+    border-radius: 100px;
+    border: 1px solid gray;
+    transition: all 0,3s ease-in-out;
+}
+.slider-container > .pagination > label:hover{
+    background: #2fb2f8;
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #000;
+
+}
+
+.box{
+    position:relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: animate 20s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    100%{
+        transform: perspective(1000px) rotateY(360deg);
+    }
+}
+
+.box span{
+    border: 1px solid white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: rotateY(calc(var(--i)*45deg)) translateZ(400px);
+    -webkit-box-reflect: below 5px
+       linear-gradient(transparent,transparent,#0004);
+}
+.box span img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
